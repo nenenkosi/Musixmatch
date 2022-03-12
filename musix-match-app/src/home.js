@@ -10,10 +10,10 @@ import { Link } from "react-router-dom";
 
 
 const HomePage = (lyrics) => {
-
     const [storeLyrics, setstoreLyrics] = useState([])
     const [Search, setSearch] = useState('')
     const dispatch = useDispatch()
+
     useEffect(() => {
 
         if (lyrics.lyrics.message != undefined) {
@@ -29,8 +29,8 @@ const HomePage = (lyrics) => {
     const searchBylyrics = async (x) => {
 
         dispatch(getlyrics(x))
-
     }
+
     const handleChange = (event) => {
 
         setSearch(event.target.value);
@@ -43,16 +43,13 @@ const HomePage = (lyrics) => {
     }
     return (
         <div className="App">
-
-
             <Header />
-            {/* <SearchBar /> */}
             <div className='mainCard'>
                 <div >
                     <h2 style={{ textAlign: "center" }}>Search the lyrics of any song</h2>
                     <form onSubmit={handleSubmit}>
                         <label className='mainSearchBar'>
-                            <input className='searchBar' placeholder="type your lyrics" type="text" value={Search} onChange={handleChange} />
+                            <input className='searchBar' placeholder="Type your lyrics" type="text" value={Search} onChange={handleChange} />
                             <input className='button' type="submit" value="Submit" />
                         </label>
 
@@ -60,11 +57,12 @@ const HomePage = (lyrics) => {
                 </div>
                 <div style={{ marginLeft: '16px', marginRight: '16px' }}>
                     <h2 style={{ textAlign: 'center' }}>Top 10 Tracks</h2>
+                    
+                    
                     {(typeof storeLyrics === undefined || storeLyrics == []) ? (
                         <h1>Loading...</h1>
                     ) :
                         storeLyrics.map((val, key) => {
-
                             return (<div key={key} className='glassCard' style={{ display: 'flex' }}>
                                 <div className='logoBox'>
 
@@ -90,6 +88,7 @@ const HomePage = (lyrics) => {
                                 {/* </div> */}
                             </div>)
                         })}
+
                 </div>
             </div>
         </div>

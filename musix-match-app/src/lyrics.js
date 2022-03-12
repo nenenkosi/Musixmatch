@@ -13,10 +13,12 @@ const Lyrics = (lyrics) => {
   const location = useLocation();
   const [storeLyrics, setstoreLyrics] = useState()
   const dispatch = useDispatch()
+
+
   useEffect(() => {
 
     fetchLyrics(location.state)
-
+// console.log(location.state);
   }, [])
 
   useEffect(() => {
@@ -61,7 +63,7 @@ const Lyrics = (lyrics) => {
 
             <div>
               <p><strong>{location.state.artist_name}</strong></p>
-              <p><strong>Track:</strong> {location.Track}</p>
+              <p><strong>Track:</strong> {location.state.Track}</p>
               <p><strong>Album:</strong>{location.state.Album}</p>
               {location.state.hasLyrics != 0 ? <p><strong>Lyrics:</strong>{storeLyrics}</p> : <p><strong>Lyrics:</strong>They are no Lyrics to this song sorry</p>}
             </div>
